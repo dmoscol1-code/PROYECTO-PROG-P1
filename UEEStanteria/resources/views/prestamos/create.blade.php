@@ -43,9 +43,9 @@
                             @if ($intereses->count())
                                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
                                     @foreach($intereses as $interes)
-                                        <label class="inline-flex items-center p-2 border rounded hover:bg-gray-50">
+                                        <label class="inline-flex items-center p-2 border rounded hover:bg-red-50">
                                             <input type="checkbox" name="intereses[]" value="{{ $interes->id }}" 
-                                                class="w-4 h-4 text-blue-600" 
+                                                class="w-4 h-4 text-red-600" 
                                                 {{ in_array($interes->id, old('intereses', [])) ? 'checked' : '' }}>
                                             <span class="ml-2 text-gray-700 font-medium">{{ $interes->nombre }}</span>
                                         </label>
@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="flex gap-4">
-                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline">
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline">
                                 {{ __('Guardar Persona') }}
                             </button>
                             <a href="{{ route('personas.index') }}" class="inline-block bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded">
