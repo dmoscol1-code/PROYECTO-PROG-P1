@@ -18,12 +18,12 @@
             <form action="{{ route('libros.store') }}" method="POST">
                 @csrf
  
-                <div class="flex items-center gap-2 mb-001">
+                <div class="flex items-center gap-2 mb-6">
                     <div id="step-indicator-1" class="flex items-center gap-2">
                         <span class="w-7 h-7 rounded-full bg-red-600 text-white text-xs font-bold flex items-center justify-center">1</span>
                         <span class="text-sm font-semibold text-red-600">Información Principal</span>
                     </div>
-                    <div class="flex-1 h-px bg-gray-300 mx-2"></div>
+                    <div class="flex-1 h-px bg-gray-300 mx-2 gap-2"></div>
                     <div id="step-indicator-2" class="flex items-center gap-2">
                         <span id="step2-circle" class="w-7 h-7 rounded-full bg-gray-300 text-gray-500 text-xs font-bold flex items-center justify-center">2</span>
                         <span id="step2-label" class="text-sm font-semibold text-gray-400">Datos Técnicos</span>
@@ -32,7 +32,7 @@
  
                 {{-- PASO 1: Información principal --}}
                 <div id="step-1">
-                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-5">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
                             <div class="px-6 py-3 border-b border-gray-100">
                                 <h3 class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Información Principal</h3>
                             </div>
@@ -145,7 +145,7 @@
  
                 {{-- PASO 2: Datos técnicos e inventario --}}
                 <div id="step-2" class="hidden">
-                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
                         <div class="px-6 py-3 border-b border-gray-100">
                             <h3 class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Datos Técnicos e Inventario</h3>
                         </div>

@@ -2,30 +2,30 @@
     <x-slot name="header">
         <div class="flex items-center gap-3">
             <a href="{{ route('libros.index') }}"
-               class="text-gray-400 hover:text-red-600 transition-colors">
+               class="text-white-400 hover:text-red-600 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
             </a>
             <div>
-                <h2 class="text-2xl font-bold text-gray-900 leading-tight">
+                <h2 class="text-2xl font-bold text-white-900 leading-tight">
                     {{ __('Editar Libro') }}
                 </h2>
-                <p class="text-sm text-gray-500 mt-0.5">
-                    Modificando: <span class="font-medium text-gray-700">{{ $libro->titulo }}</span>
+                <p class="text-sm text-white-500 mt-0.5">
+                    Modificando: <span class="font-medium text-white-700">{{ $libro->titulo }}</span>
                 </p>
             </div>
         </div>
     </x-slot>
  
     <div class="py-10">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8 mb-6">
             <form action="{{ route('libros.update', $libro->id) }}" method="POST">
                 @csrf
                 @method('PUT')
  
                 {{-- Información principal --}}
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-5">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
                     <div class="bg-red-600 px-6 py-3">
                         <h3 class="text-white font-semibold text-sm uppercase tracking-wider flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -137,7 +137,7 @@
                 </div>
  
                 {{-- Datos técnicos e inventario --}}
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-6">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-8">
                     <div class="bg-red-600 px-6 py-3">
                         <h3 class="text-white font-semibold text-sm uppercase tracking-wider flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
