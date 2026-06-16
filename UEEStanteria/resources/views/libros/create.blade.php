@@ -18,15 +18,17 @@
             <form action="{{ route('libros.store') }}" method="POST">
                 @csrf
  
-                <div class="flex items-center gap-2 mb-001">
-                    <div id="step-indicator-1" class="flex items-center gap-2">
-                        <span class="w-7 h-7 rounded-full bg-red-600 text-white text-xs font-bold flex items-center justify-center">1</span>
-                        <span class="text-sm font-semibold text-red-600">Información Principal</span>
-                    </div>
-                    <div class="flex-1 h-px bg-gray-300 mx-2"></div>
-                    <div id="step-indicator-2" class="flex items-center gap-2">
-                        <span id="step2-circle" class="w-7 h-7 rounded-full bg-gray-300 text-gray-500 text-xs font-bold flex items-center justify-center">2</span>
-                        <span id="step2-label" class="text-sm font-semibold text-gray-400">Datos Técnicos</span>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 px-5 py-5 mb-8">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                        <div id="step-indicator-1" class="flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-full bg-red-600 text-white text-xs font-bold flex items-center justify-center">1</span>
+                            <span class="text-sm font-semibold text-red-600">Información Principal</span>
+                        </div>
+                        <div class="flex-1 h-px bg-gray-300"></div>
+                        <div id="step-indicator-2" class="flex items-center gap-2">
+                            <span id="step2-circle" class="w-7 h-7 rounded-full bg-gray-300 text-gray-500 text-xs font-bold flex items-center justify-center">2</span>
+                            <span id="step2-label" class="text-sm font-semibold text-gray-400">Datos Técnicos</span>
+                        </div>
                     </div>
                 </div>
  
@@ -248,13 +250,13 @@
  
                         </div>
                     </div>
- 
+
                     {{-- Botones paso 2 --}}
-                    <div class="flex items-center justify-between">
-                        <button type="button" onclick="goToStep1()" class="bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-lg">Atrás</button>
-                        <div class="flex gap-3">
-                            <a href="{{ route('libros.index') }}" class="bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-lg">Cancelar</a>
-                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg shadow">Guardar</button>
+                    <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <button type="button" onclick="goToStep1()" class="w-full sm:w-auto bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 font-semibold py-2.5 px-4 rounded-lg transition">Atrás</button>
+                        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                            <a href="{{ route('libros.index') }}" class="w-full sm:w-auto bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 font-semibold py-2.5 px-4 rounded-lg transition">Cancelar</a>
+                            <button type="submit" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-4 rounded-lg shadow transition">Guardar</button>
                         </div>
                     </div>
                 </div>
