@@ -145,6 +145,24 @@
                                         </td>
                                         <td class="px-5 py-4">
                                             <div class="flex justify-center gap-2">
+                                                @if ($libro->inventario > 0)
+                                                    <a href="{{ route('prestamos.create', ['libro' => $libro->id]) }}"
+                                                       class="inline-flex items-center gap-1 text-sm text-white hover:text-white font-medium bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-lg transition-colors">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M6 11h12M4 15h16M7 19h10"/>
+                                                        </svg>
+                                                        Prestar
+                                                    </a>
+                                                @else
+                                                    <span
+                                                        class="inline-flex items-center gap-1 text-sm text-gray-400 bg-gray-100 border border-gray-200 px-3 py-1.5 rounded-lg opacity-60 cursor-not-allowed"
+                                                        aria-disabled="true">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M6 11h12M4 15h16M7 19h10"/>
+                                                        </svg>
+                                                        Sin stock
+                                                    </span>
+                                                @endif
                                                 <a href="{{ route('libros.edit', $libro->id) }}"
                                                    class="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 font-medium bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

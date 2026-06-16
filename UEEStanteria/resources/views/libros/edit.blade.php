@@ -24,6 +24,21 @@
                 @csrf
                 @method('PUT')
  
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 px-5 py-5 mb-8">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                        <div id="step-indicator-1" class="flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-full bg-red-600 text-white text-xs font-bold flex items-center justify-center">1</span>
+                            <span class="text-sm font-semibold text-red-600">Información Principal</span>
+                        </div>
+                        <div class="flex-1 h-px bg-gray-300"></div>
+                        <div id="step-indicator-2" class="flex items-center gap-2">
+                            <span id="step2-circle" class="w-7 h-7 rounded-full bg-gray-300 text-gray-500 text-xs font-bold flex items-center justify-center">2</span>
+                            <span id="step2-label" class="text-sm font-semibold text-gray-400">Datos Técnicos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="step-1">
                 {{-- Información principal --}}
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-5">
                     <div class="bg-red-600 px-6 py-3">
@@ -135,9 +150,20 @@
  
                     </div>
                 </div>
+
+                    <div class="flex justify-end">
+                        <button type="button" onclick="goToStep2()" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-6 rounded-lg shadow transition-colors">
+                            Siguiente
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
  
-                {{-- Datos técnicos e inventario --}}
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-6">
+                <div id="step-2" class="hidden">
+                    {{-- Datos técnicos e inventario --}}
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-6">
                     <div class="bg-red-600 px-6 py-3">
                         <h3 class="text-white font-semibold text-sm uppercase tracking-wider flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -245,6 +271,15 @@
  
                     </div>
                 </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <button type="button" onclick="goToStep1()" class="w-full sm:w-auto bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 font-semibold py-2.5 px-4 rounded-lg transition">Atrás</button>
+                        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                            <a href="{{ route('libros.index') }}" class="w-full sm:w-auto bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 font-semibold py-2.5 px-4 rounded-lg transition">Cancelar</a>
+                            <button type="submit" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-6 rounded-lg shadow transition-colors">Actualizar Libro</button>
+                        </div>
+                    </div>
+                </div>
  
                 {{-- Última modificación --}}
                 <div class="flex items-center gap-2 text-xs text-gray-400 mb-5 px-1">
@@ -254,23 +289,33 @@
                     Última modificación: {{ $libro->updated_at->format('d/m/Y H:i') }}
                 </div>
  
-                {{-- Botones --}}
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <a href="{{ route('libros.index') }}"
-                           class="inline-flex items-center gap-2 bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 font-semibold py-2.5 px-6 rounded-lg transition-colors">
-                            Cancelar
-                        </a>
-                        <button type="submit"
-                                class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-semibold py-2.5 px-8 rounded-lg shadow transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Actualizar Libro
-                        </button>
-                    </div>
-                </div>
- 
+                <script>
+                    function goToStep2() {
+                        const titulo = document.getElementById('titulo');
+                        const autor = document.getElementById('autor');
+                        if (!titulo.value.trim() || !autor.value.trim()) {
+                            titulo.reportValidity();
+                            return;
+                        }
+                        document.getElementById('step-1').classList.add('hidden');
+                        document.getElementById('step-2').classList.remove('hidden');
+                        document.getElementById('step2-circle').classList.replace('bg-gray-300', 'bg-red-600');
+                        document.getElementById('step2-circle').classList.replace('text-gray-500', 'text-white');
+                        document.getElementById('step2-label').classList.replace('text-gray-400', 'text-red-600');
+                    }
+
+                    function goToStep1() {
+                        document.getElementById('step-2').classList.add('hidden');
+                        document.getElementById('step-1').classList.remove('hidden');
+                        document.getElementById('step2-circle').classList.replace('bg-red-600', 'bg-gray-300');
+                        document.getElementById('step2-circle').classList.replace('text-white', 'text-gray-500');
+                        document.getElementById('step2-label').classList.replace('text-red-600', 'text-gray-400');
+                    }
+
+                    @if ($errors->hasAny(['isbn', 'paginas', 'idioma', 'inventario', 'precio', 'edicion']))
+                        goToStep2();
+                    @endif
+                </script>
             </form>
 
             <div class="mt-5">

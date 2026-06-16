@@ -23,4 +23,9 @@ class Libro extends Model
         'precio',
         'edicion',
     ];
+
+    public function prestamos()
+    {
+        return $this->hasMany(Prestamo::class);
+    }
 }

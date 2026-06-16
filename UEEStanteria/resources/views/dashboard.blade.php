@@ -12,8 +12,8 @@
                     <p class="mb-2">Bienvenido — esto es el panel por defecto.</p>
                     <p class="mb-2">Accede a las secciones:</p>
                     <ul class="list-disc ms-6 text-gray-700">
-                        <li><a href="/intereses" class="text-red-600 hover:text-red-800 hover:underline">Intereses</a></li>
-                        <li><a href="/libros" class="text-red-600 hover:text-red-800 hover:underline">Libros</a></li>
+                        <li><a href="{{ route('prestamos.index') }}" class="text-red-600 hover:text-red-800 hover:underline">Préstamos</a></li>
+                        <li><a href="{{ route('libros.index') }}" class="text-red-600 hover:text-red-800 hover:underline">Libros</a></li>
                     </ul>
                 </div>
             </div>
